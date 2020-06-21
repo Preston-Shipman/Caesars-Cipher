@@ -1,11 +1,16 @@
 function rot13(str) {
-  let acsTwoStr = str.charCodeAt()
-  //  const index = 13;
-  //  let str1 = str.charCodeAt();
-  //  const str2 = str1.fromCharCode(str1)
-  //  console.log(str1)
-  let englishStr = str.fromCharCodeAt(13)
-  console.log(acsTwoStr)
-}
+  var newArr = [];
+  for (i = 0; i < str.length; i++) {
+    var newLetter = str.charCodeAt(i);
+    if (newLetter >= 65 && newLetter <= 90) {
+      newLetter -= 13;
+      if (newLetter < 65) {
+        newLetter += 26;
+      }
+    }
 
-rot13("SERR PBQR PNZC");
+    newArr.push(String.fromCharCode(newLetter));
+  }
+
+  return newArr.join('');
+}
