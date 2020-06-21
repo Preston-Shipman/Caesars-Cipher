@@ -1,16 +1,17 @@
 function rot13(str) {
-  var newArr = [];
-  for (i = 0; i < str.length; i++) {
-    var newLetter = str.charCodeAt(i);
-    if (newLetter >= 65 && newLetter <= 90) {
-      newLetter -= 13;
-      if (newLetter < 65) {
-        newLetter += 26;
-      }
-    }
-
-    newArr.push(String.fromCharCode(newLetter));
-  }
-
-  return newArr.join('');
+  return (
+    str
+      .split("")
+      .map.call(str, function (char) {
+        var x = char.charCodeAt(0);
+        if (x < 65 || x > 90) {
+          return String.fromCharCode(x);
+        }
+        else if (x < 78) {
+          return String.fromCharCode(x + 13);
+        }
+        return String.fromCharCode(x - 13);
+      })
+      .join("")
+  );
 }
